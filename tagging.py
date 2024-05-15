@@ -10,9 +10,9 @@ def tag(legal_questions):
     model="gpt-4o",
     messages=[
     {"role": "system", "content": "Je bent een jurist."},
-    {"role": "user", "content": f"""Geef de op juridisch vlak belangrijkste sleutelwoorden in de gegeven rechtsvragen, zonder specifieke namen of feiten te gebruiken. 
+    {"role": "user", "content": f"""Geef de op juridisch vlak belangrijkste sleutelwoorden, afgeleid uit de gegeven rechtsvragen, zonder specifieke namen of feiten te gebruiken. 
 Zorg ervoor dat de sleutelwoorden helder en beknopt zijn, zodat een jurist snel kan inschatten waar het vonnis of arrest over handelt. 
-Volg de exact de structuur van het gegeven voorbeeld.
+Voer uit naar analogie van het gegeven voorbeeld.
 Scheid de woorden door middel van een koppelteken "-". 
 Voorbeeld: {voorbeeld}
 Rechtsvragen: {legal_questions}"""

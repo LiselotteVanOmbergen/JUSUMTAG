@@ -23,7 +23,7 @@ if "judgment" not in st.session_state:
     st.session_state.judgment = None
 
 st.session_state.judgment = st.text_area(label="Plak hieronder de tekst van een vonnis of arrest")
-if st.button("Tekst opladen"):
+if st.button("Tekst opladen :spiral_note_pad:"):
     if st.session_state.judgment:
         st.session_state.legal_questions = define_legal_questions(st.session_state.judgment)
         st.write("Tekst opgeladen")
