@@ -4,7 +4,7 @@ import openai
 def summarize(legal_questions, max_words, judgment):
     client = openai.Client()
     completion = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+    model="gpt-4o",
     messages=[
     {"role": "system", "content": "Je bent een jurist"},
     {"role": "user", "content": f"""Wat zijn de antwoorden op de rechtsvragen en subvragen, vermeld in {legal_questions}, in het gegeven vonnis of arrest? 

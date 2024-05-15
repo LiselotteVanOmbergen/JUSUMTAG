@@ -7,7 +7,7 @@ voorbeeld = "begroting schade - arbeidsongeschiktheid - tijdelijke invaliditeit 
 def tag(legal_questions):
     client = openai.Client()
     completion = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+    model="gpt-4o",
     messages=[
     {"role": "system", "content": "Je bent een jurist."},
     {"role": "user", "content": f"""Geef de op juridisch vlak belangrijkste sleutelwoorden in de gegeven rechtsvragen, zonder specifieke namen of feiten te gebruiken. 
