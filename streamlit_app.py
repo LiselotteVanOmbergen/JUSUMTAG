@@ -65,6 +65,3 @@ if st.session_state.tags:
     st.write(st.session_state.tags)
     st.download_button("Download tags", st.session_state.tags, file_name="tags.txt", mime="text/plain")
 
-# Shareable link
-st.subheader("Deelbare link")
-shareable_link = st.text_input("Kopieer en deel deze link", value=st.script_request_queue.get_current().get_pathname(), readonly=True)
