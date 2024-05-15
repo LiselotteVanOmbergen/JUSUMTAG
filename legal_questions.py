@@ -1,7 +1,7 @@
 import openai
 
 def define_legal_questions(judgment):
-    client = openai()
+    client = openai.Client()
     completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[

@@ -6,7 +6,7 @@ HANDELS-, ECONOMISCH EN FINANCIEEL RECHT - VERZEKERINGEN - Publiek verzekeringsr
 Gebrekkige zaak - schade conform artikel 1384 eerste lid BW - tijdelijke arbeidsongeschiktheid - personeelslid - publieke sector"""
 
 def tag(legal_questions):
-    client = openai()
+    client = openai.Client()
     completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
