@@ -13,7 +13,8 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.header("Laad vonnis of arrest op")
-    file = st.file_uploader(label = "")
+    #file = st.file_uploader(label = "")
+    file = st.text_input(label = "")
     if file:
         legal_questions = define_legal_questions(file)
 
