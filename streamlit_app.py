@@ -50,7 +50,7 @@ with col3:
         st.session_state.tags = tag(st.session_state.legal_questions)
 
 # Add separator
-st.write("---")
+
 
 # Display summaries and tags if available
 if st.session_state.summary_short:
