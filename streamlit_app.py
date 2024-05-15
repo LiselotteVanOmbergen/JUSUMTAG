@@ -35,6 +35,7 @@ if st.button("Tekst opladen :spiral_note_pad:"):
         else:
             st.write("Geen tekst opgeladen")
 
+st.write("---")
 
 col1, col2, col3 = st.columns(3)
 
