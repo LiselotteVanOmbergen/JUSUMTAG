@@ -22,12 +22,10 @@ with col1:
         file = st.text_area(label = "tekst vonnis of arrest")
     if file:
         st.write("Tekst opgeladen")
+        st.write(legal_questions = define_legal_questions(file))
     else:
         st.write("Geen tekst opgeladen")
 
-
-if file:
-    st.write(legal_questions = define_legal_questions(file))
 
 with col2:
     if file:
