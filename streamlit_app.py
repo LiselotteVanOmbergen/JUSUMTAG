@@ -23,7 +23,7 @@ if "judgment" not in st.session_state:
     st.session_state.judgment = None
 
 # Upload Text Section
-st.header("Upload Tekst")
+
 text_area_judgment = st.text_area(label="Plak hieronder de tekst van een vonnis of arrest")
 
 
