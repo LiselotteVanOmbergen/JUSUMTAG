@@ -9,16 +9,16 @@ openai.api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY"))
 
 st.set_page_config(layout="wide")
 
-col1, col2 = st.columns(2)
+#col1, col2 = st.columns(2)
 
 legal_questions = None
 summary_short = ""
 summary_long = ""
 tags = ""
 
-with col1:
-    file = st.text_area(label = "Plak hier de tekst van een vonnis of arrest")
-    if st.button("tekst opladen"):
+
+file = st.text_area(label = "Plak hier de tekst van een vonnis of arrest")
+if st.button("tekst opladen"):
         #st.text_input(label="")
         if file:
             st.write("Tekst opgeladen")
@@ -27,14 +27,12 @@ with col1:
             st.write("Geen tekst opgeladen")
 
 
-with col2:
-        if st.button("Beknopte samenvatting (max. 150)"):
+
+if st.button("Beknopte samenvatting (max. 150)"):
             summary_short = summarize(legal_questions, 150)
-
-        if st.button("Uitvoerige samenvatting (max. 300)"):
+if st.button("Uitvoerige samenvatting (max. 300)"):
             summary_long = summarize(legal_questions, 300)
-
-        if st.button('Genereer tags'):
+if st.button('Genereer tags'):
             tags = tag(legal_questions)
 
 st.write(summary_short)
