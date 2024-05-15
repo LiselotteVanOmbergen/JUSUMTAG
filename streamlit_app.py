@@ -5,10 +5,12 @@ from legal_questions import define_legal_questions
 from summary import summarize
 from tagging import tag
 
+# Set OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY"))
 
+# Set layout configuration
 st.set_page_config(layout="wide")
-st.title(":scales: Samenvatting en tagging :scales:")
+st.title(":scales: Summary and Tagging :scales:")
 
 # Initialize session state variables
 if "legal_questions" not in st.session_state:
@@ -22,47 +24,50 @@ if "tags" not in st.session_state:
 if "judgment" not in st.session_state:
     st.session_state.judgment = None
 
-# Upload Text Section
+# Text upload section
+text_area_judgment = st.text_area(label="Paste the text of a judgment or ruling below")
 
-text_area_judgment = st.text_area(label="Plak hieronder de tekst van een vonnis of arrest")
+# Button to upload text
+if st.button("Upload Text :spiral_note_pad:"):
+    if text_area_judgment:
+        st.session_state.judgment = text_area_judgment
+        st.session_state.legal_questions = define_legal_questions(text_area_judgment)
+        st.write("Text uploaded")
+    else:
+        st.write("No text uploaded")
 
-
-if st.button("Tekst opladen :spiral_note_pad:"):
-        if text_area_judgment:
-            st.session_state.judgment = text_area_judgment
-            st.session_state.legal_questions = define_legal_questions(text_area_judgment)
-            st.write("Tekst opgeladen")
-        else:
-            st.write("Geen tekst opgeladen")
-
+# Add horizontal line to separate sections
 st.write("---")
 
+# Create three columns for buttons
 col1, col2, col3 = st.columns(3)
 
+# Button to generate concise summary
 with col1:
-    if st.button("Beknopte samenvatting (max. 150):female-judge:"):
+    if st.button("Concise Summary (max 150 words):female-judge:"):
         st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.judgment)
+
+# Button to generate detailed summary
 with col2:
-    if st.button("Uitvoerige samenvatting (max. 300):female-judge:"):
+    if st.button("Detailed Summary (max 300 words):female-judge:"):
         st.session_state.summary_long = summarize(st.session_state.legal_questions, 300, st.session_state.judgment)
+
+# Button to generate tags
 with col3:
-    if st.button('Genereer tags :female-judge:'):
+    if st.button('Generate Tags :female-judge:'):
         st.session_state.tags = tag(st.session_state.legal_questions)
 
-# Add separator
-
-
-# Display summaries and tags if available
+# Display generated summaries and tags
 if st.session_state.summary_short:
-    st.subheader("Beknopte samenvatting")
+    st.subheader("Concise Summary")
     st.write(st.session_state.summary_short)
-    st.download_button("Download beknopte samenvatting", st.session_state.summary_short, file_name="beknopte_samenvatting.txt", mime="text/plain")
+    st.download_button("Download Concise Summary", st.session_state.summary_short, file_name="concise_summary.txt", mime="text/plain")
 if st.session_state.summary_long:
-    st.subheader("Uitvoerige samenvatting")
+    st.subheader("Detailed Summary")
     st.write(st.session_state.summary_long)
-    st.download_button("Download uitvoerige samenvatting", st.session_state.summary_long, file_name="uitvoerige_samenvatting.txt", mime="text/plain")
+    st.download_button("Download Detailed Summary", st.session_state.summary_long, file_name="detailed_summary.txt", mime="text/plain")
 if st.session_state.tags:
     st.subheader("Tags")
     st.write(st.session_state.tags)
-    st.download_button("Download tags", st.session_state.tags, file_name="tags.txt", mime="text/plain")
+    st.download_button("Download Tags", st.session_state.tags, file_name="tags.txt", mime="text/plain")
 

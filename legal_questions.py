@@ -13,8 +13,9 @@ zonder vermelding van de specifieke partijen, feiten of details van de zaak. Von
 
 )
 
-# Haal de gegenereerde uitvoer op en vervang '\\n' met '\n' voor opmaak
+
+    # Get the generated output and replace '\\n' with '\n' for formatting
     output = completion.choices[0].message.content.replace('\\n', '\n')
 
-# Druk de gegenereerde uitvoer af
+    # Return the generated output
     return output
