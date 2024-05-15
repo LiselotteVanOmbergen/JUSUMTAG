@@ -28,7 +28,6 @@ with col1:
 
 
 with col2:
-    if file:
         if st.button("Beknopte samenvatting (max. 150)"):
             summary_short = summarize(legal_questions, 150)
 
