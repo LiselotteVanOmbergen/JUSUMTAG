@@ -22,7 +22,6 @@ with col1:
         #st.text_input(label="")
         if file:
             st.write("Tekst opgeladen")
-            st.write(legal_questions = define_legal_questions(file))
         else:
             st.write("Geen tekst opgeladen")
 
