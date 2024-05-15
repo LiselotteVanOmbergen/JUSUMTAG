@@ -7,24 +7,27 @@ from tagging import tag
 
 openai.api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY"))
 
-col1, col2 = st.columns(2)
+st.set_page_config(layout="wide")
 
-file = st.text_input(label="")
+col1, col2 = st.columns(2)
 
 legal_questions = None
 summary_short = ""
 summary_long = ""
 tags = ""
 
-if file:
-    legal_questions = define_legal_questions(file)
-
 with col1:
-    st.header("Laad vonnis of arrest op")
+    if st.button("tekst opladen"):
+        #st.text_input(label="")
+        file = st.text_area(label = "tekst vonnis of arrest")
     if file:
-        st.write("File loaded:", file)
+        st.write("Tekst opgeladen")
     else:
-        st.write("No file loaded.")
+        st.write("Geen tekst opgeladen")
+
+
+if file:
+    st.write(legal_questions = define_legal_questions(file))
 
 with col2:
     if file:
@@ -37,6 +40,6 @@ with col2:
         if st.button('Genereer tags'):
             tags = tag(legal_questions)
 
-    st.write(summary_short)
-    st.write(summary_long)
-    st.write(tags)
+st.write(summary_short)
+st.write(summary_long)
+st.write(tags)
