@@ -19,20 +19,22 @@ if "summary_long" not in st.session_state:
     st.session_state.summary_long = ""
 if "tags" not in st.session_state:
     st.session_state.tags = ""
+if "judgment" not in st.session_state:
+    st.session_state.judgment = None
 
-file = st.text_area(label="Plak hier de tekst van een vonnis of arrest")
+st.session_state.judgment = st.text_area(label="Plak hier de tekst van een vonnis of arrest")
 if st.button("Tekst opladen"):
-    if file:
-        st.session_state.legal_questions = define_legal_questions(file)
+    if st.session_state.judgment:
+        st.session_state.legal_questions = define_legal_questions(st.session_state.judgment)
         st.write("Tekst opgeladen")
     else:
         st.write("Geen tekst opgeladen")
 
 if st.button("Beknopte samenvatting (max. 150):female-judge:"):
-    st.session_state.summary_short = summarize(st.session_state.legal_questions, 150)
+    st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.jugdment)
 
 if st.button("Uitvoerige samenvatting (max. 300):female-judge:"):
-    st.session_state.summary_long = summarize(st.session_state.legal_questions, 300)
+    st.session_state.summary_long = summarize(st.session_state.legal_questions, 300, st.session_state.jugdment)
 
 if st.button('Genereer tags :female-judge:'):
     st.session_state.tags = tag(st.session_state.legal_questions)
