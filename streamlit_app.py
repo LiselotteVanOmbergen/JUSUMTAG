@@ -13,7 +13,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.header("Laad vonnis of arrest op")
-    file = st.file_uploader(label = "vonnis of arrest")
+    file = st.file_uploader(label = "")
     if file:
         legal_questions = define_legal_questions(file)
 
@@ -28,4 +28,4 @@ with col2:
         if st.button('Genereer tags'):
             st.write(tag(legal_questions))
     else:
-        st.write("Laad een bestand op om samenvattingen en tags te genereren.")
+        st.write("")
