@@ -1,7 +1,7 @@
 import openai
 
 # Example 
-voorbeeld = "damage assessment - disability - temporary incapacity - commercial, economic, and financial law - insurance - public insurance law - defective product - damage according to article 1384 first paragraph bw - temporary disability - staff member - public sector"
+voorbeeld = "begroting schade - arbeidsongeschiktheid - tijdelijke invaliditeit - handels-, economisch en financieel recht - verzekeringen - publiek verzekeringsrecht - gebrekkige zaak - schade conform artikel 1384 eerste lid bw - tijdelijke arbeidsongeschiktheid - personeelslid - publieke sector"
 
 def tag(legal_questions):
     # Client initialization
