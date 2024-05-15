@@ -17,4 +17,4 @@ zonder vermelding van de specifieke partijen, feiten of details van de zaak. Von
     output = completion.choices[0].message.content.replace('\\n', '\n')
 
 # Druk de gegenereerde uitvoer af
-    return "output"
+    return output

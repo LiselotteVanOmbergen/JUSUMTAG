@@ -18,4 +18,4 @@ Presenteer de tekst als een doorlopende tekst zonder enige onderverdelingen of o
     output = completion.choices[0].message.content.replace('\\n', '\n')
 
 # Druk de gegenereerde uitvoer af
-    return "output"
+    return output

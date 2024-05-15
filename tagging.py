@@ -22,4 +22,4 @@ Voorbeeld: {voorbeeld.lower}"""}
     output = completion.choices[0].message.content.replace('\\n', '\n')
 
 # Druk de gegenereerde uitvoer af
-    return "output"
+    return output
