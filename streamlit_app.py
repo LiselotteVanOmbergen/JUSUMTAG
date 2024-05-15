@@ -20,11 +20,11 @@ with col1:
     if st.button("tekst opladen"):
         #st.text_input(label="")
         file = st.text_area(label = "tekst vonnis of arrest")
-    if file:
-        st.write("Tekst opgeladen")
-        st.write(legal_questions = define_legal_questions(file))
-    else:
-        st.write("Geen tekst opgeladen")
+        if file:
+            st.write("Tekst opgeladen")
+            st.write(legal_questions = define_legal_questions(file))
+        else:
+            st.write("Geen tekst opgeladen")
 
 
 with col2:
