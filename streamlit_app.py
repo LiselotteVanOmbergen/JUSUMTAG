@@ -17,9 +17,9 @@ summary_long = ""
 tags = ""
 
 with col1:
+    file = st.text_area(label = "Plak hier de tekst van een vonnis of arrest")
     if st.button("tekst opladen"):
         #st.text_input(label="")
-        file = st.text_area(label = "tekst vonnis of arrest")
         if file:
             st.write("Tekst opgeladen")
             st.write(legal_questions = define_legal_questions(file))
