@@ -31,10 +31,10 @@ if st.button("Tekst opladen"):
         st.write("Geen tekst opgeladen")
 
 if st.button("Beknopte samenvatting (max. 150):female-judge:"):
-    st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.jugdment)
+    st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.judgment)
 
 if st.button("Uitvoerige samenvatting (max. 300):female-judge:"):
-    st.session_state.summary_long = summarize(st.session_state.legal_questions, 300, st.session_state.jugdment)
+    st.session_state.summary_long = summarize(st.session_state.legal_questions, 300, st.session_state.judgment)
 
 if st.button('Genereer tags :female-judge:'):
     st.session_state.tags = tag(st.session_state.legal_questions)
