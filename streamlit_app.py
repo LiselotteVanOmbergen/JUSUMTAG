@@ -7,6 +7,7 @@ from legal_questions import define_legal_questions
 
 
 openai.api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY"))
+
 col1, col2 = st.columns(2)
 
 with col1:
