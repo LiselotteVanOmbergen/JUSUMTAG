@@ -9,32 +9,32 @@ openai.api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY"))
 
 st.set_page_config(layout="wide")
 
-#col1, col2 = st.columns(2)
+if "legal_questions" not in st.session_state:
+    st.session_state.legal_questions = None
+if "summary_short" not in st.session_state:
+    st.session_state.summary_short = ""
+if "summary_long" not in st.session_state:
+    st.session_state.summary_long = ""
+if "tags" not in st.session_state:
+    st.session_state.tags = ""
 
-legal_questions = None
-summary_short = ""
-summary_long = ""
-tags = ""
-
-
-file = st.text_area(label = "Plak hier de tekst van een vonnis of arrest")
-if st.button("tekst opladen"):
-        #st.text_input(label="")
-        if file:
-            st.write("Tekst opgeladen")
-            legal_questions = define_legal_questions(file)
-        else:
-            st.write("Geen tekst opgeladen")
-
-
+file = st.text_area(label="Plak hier de tekst van een vonnis of arrest")
+if st.button("Tekst opladen"):
+    if file:
+        st.session_state.legal_questions = define_legal_questions(file)
+        st.write("Tekst opgeladen")
+    else:
+        st.write("Geen tekst opgeladen")
 
 if st.button("Beknopte samenvatting (max. 150)"):
-            summary_short = summarize(legal_questions, 150)
-if st.button("Uitvoerige samenvatting (max. 300)"):
-            summary_long = summarize(legal_questions, 300)
-if st.button('Genereer tags'):
-            tags = tag(legal_questions)
+    st.session_state.summary_short = summarize(st.session_state.legal_questions, 150)
 
-st.write(summary_short)
-st.write(summary_long)
-st.write(tags)
+if st.button("Uitvoerige samenvatting (max. 300)"):
+    st.session_state.summary_long = summarize(st.session_state.legal_questions, 300)
+
+if st.button('Genereer tags'):
+    st.session_state.tags = tag(st.session_state.legal_questions)
+
+st.write(st.session_state.summary_short)
+st.write(st.session_state.summary_long)
+st.write(st.session_state.tags)
