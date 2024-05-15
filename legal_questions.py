@@ -6,8 +6,8 @@ def define_legal_questions(judgment):
     model="gpt-3.5-turbo",
     messages=[
     {"role": "system", "content": "Je bent een jurist"},
-    {"role": "user", "content": f"Geef de belangrijkste rechtsvragen, subvragen, wetsartikels en juridische principes in het gegeven vonnis of arrest
-zonder vermelding van de specifieke partijen, feiten of details van de zaak. Vonnis of arrest: {judgment}"}
+    {"role": "user", "content": f"""Geef de belangrijkste rechtsvragen, subvragen, wetsartikels en juridische principes in het gegeven vonnis of arrest
+zonder vermelding van de specifieke partijen, feiten of details van de zaak. Vonnis of arrest: {judgment}"""}
     ]
    
 
