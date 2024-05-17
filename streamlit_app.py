@@ -55,7 +55,7 @@ examples = {
         "tags": "Tag10, Tag11, Tag12"
     }
 }
-with st.container():
+with st.container(border=True):
 
 # Create a 2x2 grid for example buttons
     col1, col2 = st.columns(2)
