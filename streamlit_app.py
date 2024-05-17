@@ -74,7 +74,7 @@ with st.container(border=True):
     # Text upload section
     with col2:
         st.text("Of plak hieronder de tekst van een vonnis of arrest")
-        text_area_judgment = st.text_area()
+        text_area_judgment = st.text_area(label ="")
 
         # Button to upload text
         if st.button("Tekst opladen :spiral_note_pad:"):
