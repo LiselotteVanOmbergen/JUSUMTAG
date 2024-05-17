@@ -55,7 +55,7 @@ examples = {
     }
 }
 with st.container(border=True):
-    st.text("Kies een uitgewerkt voorbeeld of voer zelf tekst in")
+    st.text("Kies een uitgewerkt voorbeeld")
 # Create a 2x2 grid for example buttons
     col1, col2 = st.columns(2)
     with col1:
@@ -73,7 +73,8 @@ with st.container(border=True):
 
     # Text upload section
     with col2:
-        text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
+        st.text("Of plak hieronder de tekst van een vonnis of arrest")
+        text_area_judgment = st.text_area()
 
         # Button to upload text
         if st.button("Tekst opladen :spiral_note_pad:"):
