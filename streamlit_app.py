@@ -69,16 +69,17 @@ with col1:
                 #st.write(f"{example} tekst en data geladen")
 
 # Text upload section
-text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
+with col2:
+    text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
 
 # Button to upload text
-if st.button("Tekst opladen :spiral_note_pad:"):
-    if text_area_judgment:
-        st.session_state.judgment = text_area_judgment
-        st.session_state.legal_questions = define_legal_questions(text_area_judgment)
-        st.write("Tekst opgeladen")
-    else:
-        st.write("Geen tekst opgeladen")
+    if st.button("Tekst opladen :spiral_note_pad:"):
+        if text_area_judgment:
+            st.session_state.judgment = text_area_judgment
+            st.session_state.legal_questions = define_legal_questions(text_area_judgment)
+            st.write("Tekst opgeladen")
+        else:
+            st.write("Geen tekst opgeladen")
 
 # Add horizontal line to separate sections
 st.write("---")
