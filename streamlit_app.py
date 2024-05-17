@@ -62,13 +62,12 @@ with st.container():
     col1, col2 = st.columns(2)
     with col1:
         example_cols = st.columns(2)
-        example_buttons = list(examples.keys())
+        example_buttons = list(examples)
 
         for i, example in enumerate(example_buttons):
             with example_cols[i % 2]:
-                if st.button(example):
-                    
-                    st.session_state.example = examples[i]
+                if st.button(example.key()):
+                    st.session_state.example = example
                     #st.write(f"{example} tekst en data geladen")
 
     # Text upload section
