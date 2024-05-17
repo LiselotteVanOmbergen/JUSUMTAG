@@ -50,11 +50,7 @@ examples = {
 
 # Dropdown to select example
 st.session_state.example = st.selectbox("Kies een voorbeeld", list(examples.keys()))
-if st.session_state.example:
-    st.session_state.summary_short = examples[st.session_state.example]["summary_short"]
-    st.session_state.summary_long = examples[st.session_state.example]["summary_long"]
-    st.session_state.tags = examples[st.session_state.example]["tags"]
-    st.write("Voorbeeld geladen")
+
     
 # Text upload section
 text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
@@ -75,21 +71,32 @@ st.write("---")
 # Create three columns for buttons
 col1, col2, col3 = st.columns(3)
 
+if st.session_state.example:
+    st.write("Voorbeeld geladen")
+    
 # Button to generate concise summary
 with col1:
     if st.button("Beknopte samenvatting (max. 150 woorden):female-judge:"):
             if text_area_judgment:
                 st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.judgment)
-            
+            if st.session_state.example:
+                st.session_state.summary_short = examples[st.session_state.example]["summary_short"]
+                
 # Button to generate detailed summary
 with col2:
     if st.button("Uitvoerige samenvatting (max. 300 woorden):female-judge:"):
-        st.session_state.summary_long = summarize(st.session_state.legal_questions, 300, st.session_state.judgment)
-
+        if text_area_judgment:
+            st.session_state.summary_long = summarize(st.session_state.legal_questions, 300, st.session_state.judgment)
+        if st.session_state.example:
+            st.session_state.summary_long = examples[st.session_state.example]["summary_long"]
+        
 # Button to generate tags
 with col3:
     if st.button('Genereer tags :female-judge:'):
-        st.session_state.tags = tag(st.session_state.legal_questions)
+        if text_area_judgment:
+            st.session_state.tags = tag(st.session_state.legal_questions)
+        if st.session_state.example:
+             st.session_state.tags = examples[st.session_state.example]["tags"]
 
 # Display generated summaries and tags
 if st.session_state.summary_short:
