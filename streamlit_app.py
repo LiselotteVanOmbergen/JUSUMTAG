@@ -12,6 +12,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY"))
 st.set_page_config(layout="wide")
 st.title(":scales: Samenvatten en taggen :scales:")
 
+st.header("Kies een uitgewerkt voorbeeld of voer zelf tekst in")
 # Initialize session state variables
 if "legal_questions" not in st.session_state:
     st.session_state.legal_questions = None
@@ -48,22 +49,25 @@ examples = {
     }
 }
 
+cola, colb = st.columns(2)
+with cola:
 # Dropdown to select example
-st.session_state.example = st.selectbox("Kies een voorbeeld", list(examples.keys()))
-if st.session_state.example:
-    st.write("Voorbeeld geladen")
+    st.session_state.example = st.selectbox("Kies een voorbeeld", list(examples.keys()))
+    if st.session_state.example:
+        st.write("Voorbeeld geladen")
     
 # Text upload section
 text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
 
+with colb:
 # Button to upload text
-if st.button("Tekst opladen :spiral_note_pad:"):
-    if text_area_judgment:
-        st.session_state.judgment = text_area_judgment
-        st.session_state.legal_questions = define_legal_questions(text_area_judgment)
-        st.write("Tekst opgeladen")
-    else:
-        st.write("Geen tekst opgeladen")
+    if st.button("Tekst opladen :spiral_note_pad:"):
+        if text_area_judgment:
+            st.session_state.judgment = text_area_judgment
+            st.session_state.legal_questions = define_legal_questions(text_area_judgment)
+            st.write("Tekst opgeladen")
+        else:
+            st.write("Geen tekst opgeladen")
 
 
 # Add horizontal line to separate sections
