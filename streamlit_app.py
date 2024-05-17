@@ -55,31 +55,32 @@ examples = {
         "tags": "Tag10, Tag11, Tag12"
     }
 }
-
+with st.container():
+    st.write("Kies voorbeeld of voer zelf tekst in")
 # Create a 2x2 grid for example buttons
-col1, col2 = st.columns(2)
-with col1:
-    example_cols = st.columns(2)
-    example_buttons = list(examples.keys())
+    col1, col2 = st.columns(2)
+    with col1:
+        example_cols = st.columns(2)
+        example_buttons = list(examples.keys())
 
-    for i, example in enumerate(example_buttons):
-        with example_cols[i % 2]:
-            if st.button(example):
-                st.session_state.example = example
-                # st.write(f"{example} tekst en data geladen")
+        for i, example in enumerate(example_buttons):
+            with example_cols[i % 2]:
+                if st.button(example):
+                    st.session_state.example = example
+                    # st.write(f"{example} tekst en data geladen")
 
-# Text upload section
-with col2:
-    text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
+    # Text upload section
+    with col2:
+        text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
 
-    # Button to upload text
-    if st.button("Tekst opladen :spiral_note_pad:"):
-        if text_area_judgment:
-            st.session_state.judgment = text_area_judgment
-            st.session_state.legal_questions = define_legal_questions(text_area_judgment)
-            st.write("Tekst opgeladen")
-        else:
-            st.write("Geen tekst opgeladen")
+        # Button to upload text
+        if st.button("Tekst opladen :spiral_note_pad:"):
+            if text_area_judgment:
+                st.session_state.judgment = text_area_judgment
+                st.session_state.legal_questions = define_legal_questions(text_area_judgment)
+                st.write("Tekst opgeladen")
+            else:
+                st.write("Geen tekst opgeladen")
 
 # Add horizontal line to separate sections
 st.write("---")
