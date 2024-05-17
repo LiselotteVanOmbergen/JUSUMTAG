@@ -24,6 +24,15 @@ if "tags" not in st.session_state:
 if "judgment" not in st.session_state:
     st.session_state.judgment = None
 
+# Hardcoded examples
+examples = {
+    "Voorbeeld 1": "Onderwerp",
+    "Voorbeeld 2": "Dit is de tekst van het tweede vonnis of arrest.",
+    "Voorbeeld 3": "Dit is de tekst van het derde vonnis of arrest."
+}
+
+# Dropdown to select example
+selected_example = st.selectbox("Kies een voorbeeld", list(examples.keys()))
 # Text upload section
 text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
 
@@ -45,8 +54,9 @@ col1, col2, col3 = st.columns(3)
 # Button to generate concise summary
 with col1:
     if st.button("Beknopte samenvatting (max. 150 woorden):female-judge:"):
-        st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.judgment)
-
+            st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.judgment)
+       
+            
 # Button to generate detailed summary
 with col2:
     if st.button("Uitvoerige samenvatting (max. 300 woorden):female-judge:"):
