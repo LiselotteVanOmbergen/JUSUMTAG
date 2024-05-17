@@ -50,7 +50,8 @@ examples = {
 
 # Dropdown to select example
 st.session_state.example = st.selectbox("Kies een voorbeeld", list(examples.keys()))
-
+if st.session_state.example:
+    st.write("Voorbeeld geladen")
     
 # Text upload section
 text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
@@ -71,8 +72,6 @@ st.write("---")
 # Create three columns for buttons
 col1, col2, col3 = st.columns(3)
 
-if st.session_state.example:
-    st.write("Voorbeeld geladen")
     
 # Button to generate concise summary
 with col1:
