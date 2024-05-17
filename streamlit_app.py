@@ -60,6 +60,8 @@ with cola:
 text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
 
 with colb:
+# Text upload section
+    text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
 # Button to upload text
     if st.button("Tekst opladen :spiral_note_pad:"):
         if text_area_judgment:
