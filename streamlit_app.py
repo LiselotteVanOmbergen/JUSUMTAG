@@ -12,7 +12,6 @@ openai.api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY"))
 st.set_page_config(layout="wide")
 st.title(":scales: Samenvatten en taggen :scales:")
 
-st.header("Kies een uitgewerkt voorbeeld of voer zelf tekst in")
 
 # Initialize session state variables
 if "legal_questions" not in st.session_state:
@@ -56,7 +55,7 @@ examples = {
     }
 }
 with st.container(border=True):
-
+    st.text("Kies een uitgewerkt voorbeeld of voer zelf tekst in")
 # Create a 2x2 grid for example buttons
     col1, col2 = st.columns(2)
     with col1:
