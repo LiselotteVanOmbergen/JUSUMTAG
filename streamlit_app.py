@@ -55,21 +55,19 @@ examples = {
     }
 }
 with st.container(border=True):
-    st.text("Kies een uitgewerkt voorbeeld")
-# Create a 2x2 grid for example buttons
     col1, col2 = st.columns(2)
     with col1:
-        example_cols = st.columns(2)
+        st.text("Kies een uitgewerkt voorbeeld")
+        example_cols = st.columns(4)
         example_buttons = list(examples.keys())
 
-        for i, example in enumerate(example_buttons):
-            with example_cols[i % 2]:
+        for example in example_buttons:
+            with example_cols[example_buttons.index(example)]:
                 if st.button(example):
                     st.session_state.summary_short = ""
                     st.session_state.summary_long = ""
                     st.session_state.tags = ""
                     st.session_state.example = example
-                    # st.write(f"{example} tekst en data geladen")
 
     # Text upload section
     with col2:
