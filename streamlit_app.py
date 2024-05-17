@@ -56,9 +56,6 @@ with cola:
     if st.session_state.example:
         st.write("Voorbeeld geladen")
     
-# Text upload section
-text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
-
 with colb:
 # Text upload section
     text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
