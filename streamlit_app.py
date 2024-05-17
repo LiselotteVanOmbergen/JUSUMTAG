@@ -59,11 +59,11 @@ with col3:
 
 # Display generated summaries and tags
 if st.session_state.summary_short:
-    st.subheader("Concise Summary")
+    st.subheader("Beknopte samenvatting")
     st.write(st.session_state.summary_short)
     st.download_button("Download beknopte samenvatting", st.session_state.summary_short, file_name="concise_summary.txt", mime="text/plain")
 if st.session_state.summary_long:
-    st.subheader("Detailed Summary")
+    st.subheader("Uitvoerige samenvatting")
     st.write(st.session_state.summary_long)
     st.download_button("Download uitvoerige samenvatting", st.session_state.summary_long, file_name="detailed_summary.txt", mime="text/plain")
 if st.session_state.tags:
