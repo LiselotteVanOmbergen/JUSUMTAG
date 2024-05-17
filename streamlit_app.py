@@ -57,7 +57,7 @@ examples = {
 with st.container(border=True):
     col1, col2 = st.columns(2)
     with col1:
-        st.text("Kies een uitgewerkt voorbeeld")
+        st.text("1. Kies een uitgewerkt voorbeeld")
         example_cols = st.columns(4)
         example_buttons = list(examples.keys())
 
@@ -71,7 +71,7 @@ with st.container(border=True):
 
     # Text upload section
     with col2:
-        st.text("Of plak hieronder de tekst van een vonnis of arrest")
+        st.text("2. Of plak hieronder de tekst van een vonnis of arrest en laad het op")
         text_area_judgment = st.text_area(label ="")
 
         # Button to upload text
