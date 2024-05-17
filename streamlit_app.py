@@ -23,16 +23,39 @@ if "tags" not in st.session_state:
     st.session_state.tags = ""
 if "judgment" not in st.session_state:
     st.session_state.judgment = None
+if "example" not in st.session_state:
+    st.session_state.example = None
 
-# Hardcoded examples
+# Hardcoded examples with summaries and tags
 examples = {
-    "Voorbeeld 1": "Onderwerp",
-    "Voorbeeld 2": "Dit is de tekst van het tweede vonnis of arrest.",
-    "Voorbeeld 3": "Dit is de tekst van het derde vonnis of arrest."
+    "Voorbeeld 1": {
+        "text": "Dit is de tekst van het eerste vonnis of arrest.",
+        "summary_short": "Beknopte samenvatting van voorbeeld 1.",
+        "summary_long": "Uitvoerige samenvatting van voorbeeld 1.",
+        "tags": "Tag1, Tag2, Tag3"
+    },
+    "Voorbeeld 2": {
+        "text": "Dit is de tekst van het tweede vonnis of arrest.",
+        "summary_short": "Beknopte samenvatting van voorbeeld 2.",
+        "summary_long": "Uitvoerige samenvatting van voorbeeld 2.",
+        "tags": "Tag4, Tag5, Tag6"
+    },
+    "Voorbeeld 3": {
+        "text": "Dit is de tekst van het derde vonnis of arrest.",
+        "summary_short": "Beknopte samenvatting van voorbeeld 3.",
+        "summary_long": "Uitvoerige samenvatting van voorbeeld 3.",
+        "tags": "Tag7, Tag8, Tag9"
+    }
 }
 
 # Dropdown to select example
-selected_example = st.selectbox("Kies een voorbeeld", list(examples.keys()))
+st.session_state.example = st.selectbox("Kies een voorbeeld", list(examples.keys()))
+if st.session_state.example:
+    st.session_state.summary_short = examples[st.session_state.example]["summary_short"]
+    st.session_state.summary_long = examples[st.session_state.example]["summary_long"]
+    st.session_state.tags = examples[st.session_state.example]["tags"]
+    st.write("Voorbeeld geladen")
+    
 # Text upload section
 text_area_judgment = st.text_area(label="Plak hieronder de tekst van het vonnis of arrest")
 
@@ -45,6 +68,7 @@ if st.button("Tekst opladen :spiral_note_pad:"):
     else:
         st.write("Geen tekst opgeladen")
 
+
 # Add horizontal line to separate sections
 st.write("---")
 
@@ -54,8 +78,8 @@ col1, col2, col3 = st.columns(3)
 # Button to generate concise summary
 with col1:
     if st.button("Beknopte samenvatting (max. 150 woorden):female-judge:"):
-            st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.judgment)
-       
+            if text_area_judgment:
+                st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.judgment)
             
 # Button to generate detailed summary
 with col2:
