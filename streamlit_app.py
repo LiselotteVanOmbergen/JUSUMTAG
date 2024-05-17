@@ -56,7 +56,7 @@ examples = {
     }
 }
 with st.container():
-    st.write("Kies voorbeeld of voer zelf tekst in")
+
 # Create a 2x2 grid for example buttons
     col1, col2 = st.columns(2)
     with col1:
@@ -66,6 +66,9 @@ with st.container():
         for i, example in enumerate(example_buttons):
             with example_cols[i % 2]:
                 if st.button(example):
+                    del st.session_state.summary_short
+                    del st.session_state.summary_long
+                    del st.session_state.tags
                     st.session_state.example = example
                     # st.write(f"{example} tekst en data geladen")
 
