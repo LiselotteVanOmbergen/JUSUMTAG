@@ -90,7 +90,7 @@ with st.container(border=True):
 
     # Text upload section
     with col2:
-        st.text("2. Of plak hieronder de tekst van een vonnis of arrest en laad het op")
+        st.text("2. Of plak hieronder een vonnis of arrest en laad het op")
         text_area_judgment = st.text_area(label ="")
 
         # Button to upload text
