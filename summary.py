@@ -12,7 +12,7 @@ def summarize(legal_questions, max_words, judgment):
         messages=[
             {"role": "system", "content": "Je bent een jurist"},
             {"role": "user", "content": f"""Wat zijn de antwoorden op de rechtsvragen en subvragen, vermeld in {legal_questions}, in het gegeven vonnis of arrest? 
-            Vermeld de wetsartikels en juridisch principes uit jouw antwoord. Je output bedraagt maximum 150 woorden, en bevat geen vermelding van de specifieke partijen, feiten of details van de zaak. Presenteer de tekst als een doorlopende tekst zonder enige onderverdelingen of ondertitels.{legal_questions}. 
+            Vermeld de wetsartikels en juridisch principes uit jouw antwoord.
             Je output bedraagt maximum {max_words} woorden, en bevat geen vermelding van de specifieke partijen, feiten of details van de zaak. 
             Presenteer de tekst als een doorlopende tekst zonder enige onderverdelingen of ondertitels.
             Voer uit naar analogie met gegeven voorbeeld.
