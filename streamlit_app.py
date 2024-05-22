@@ -87,12 +87,9 @@ with st.container(border=True):
                     st.session_state.summary_long = ""
                     st.session_state.tags = ""
                     st.session_state.example = example
-                    st.session_state.jugdment = True
+                    st.session_state.jugdment = False
                     
-    if st.session_state.example:
-        st.session_state.summary_short = examples[st.session_state.example]["summary_short"]
-        st.session_state.summary_long = examples[st.session_state.example]["summary_long"]
-        st.session_state.tags = examples[st.session_state.example]["tags"]
+    
 
         
     # Text upload section
