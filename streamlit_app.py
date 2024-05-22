@@ -114,7 +114,7 @@ col1, col2, col3 = st.columns(3)
 
 # Button to generate concise summary
 with col1:
-    if st.button("Beknopte samenvatting (max. 150 woorden):female-judge:"):
+    if st.button("Beknopte samenvatting (max. 150 woorden):female-judge:") and text_area_judgment:
         if st.session_state.judgment:
             st.session_state.summary_short = summarize(st.session_state.legal_questions, 150, st.session_state.judgment)
         elif st.session_state.example:
@@ -122,7 +122,7 @@ with col1:
 
 # Button to generate detailed summary
 with col2:
-    if st.button("Uitvoerige samenvatting (max. 300 woorden):female-judge:"):
+    if st.button("Uitvoerige samenvatting (max. 300 woorden):female-judge:") and text_area_judgment:
         if st.session_state.judgment:
             st.session_state.summary_long = summarize(st.session_state.legal_questions, 300, st.session_state.judgment)
         elif st.session_state.example:
@@ -130,7 +130,7 @@ with col2:
 
 # Button to generate tags
 with col3:
-    if st.button('Genereer tags :female-judge:'):
+    if st.button('Genereer tags :female-judge:') and text_area_judgment:
         if st.session_state.judgment:
             st.session_state.tags = tag(st.session_state.legal_questions)
         elif st.session_state.example:
