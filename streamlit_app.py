@@ -87,7 +87,7 @@ with st.container(border=True):
                     st.session_state.summary_long = ""
                     st.session_state.tags = ""
                     st.session_state.example = example
-
+                    st.session_state.judgment = False
     # Text upload section
     with col2:
         st.text("2. Of plak hieronder een vonnis of arrest en laad het op")
