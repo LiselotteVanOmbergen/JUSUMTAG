@@ -83,9 +83,9 @@ with st.container(border=True):
         for example in example_buttons:
             with example_cols[example_buttons.index(example)]:
                 if st.button(example):
-                    st.session_state.summary_short = ""
-                    st.session_state.summary_long = ""
-                    st.session_state.tags = ""
+                    st.session_state.summary_short = False
+                    st.session_state.summary_long = False
+                    st.session_state.tags = False
                     st.session_state.example = example
                     st.session_state.jugdment = True
     # Text upload section
@@ -96,10 +96,13 @@ with st.container(border=True):
         # Button to upload text
         if st.button("Tekst opladen :spiral_note_pad:"):
             if text_area_judgment:
-                
+                st.session_state.summary_short = False
+                st.session_state.summary_long = False
+                st.session_state.tags = False
                 st.session_state.judgment = text_area_judgment
                 st.session_state.legal_questions = define_legal_questions(text_area_judgment)
                 st.write("Tekst opgeladen")
+                
             else:
                 st.write("Geen tekst opgeladen")
 
