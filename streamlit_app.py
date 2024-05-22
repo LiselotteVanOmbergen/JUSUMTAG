@@ -87,7 +87,7 @@ with st.container(border=True):
                     st.session_state.summary_long = ""
                     st.session_state.tags = ""
                     st.session_state.example = example
-                    st.session_state.jugdment = False
+                    st.session_state.jugdment = True
                     
     
 
